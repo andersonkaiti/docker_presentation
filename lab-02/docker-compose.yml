@@ -1,45 +1,44 @@
-
 services:
   nginx:
-    build: 
+    build:
       dockerfile: ./docker/nginx.dockerfile
       context: .
     image: docker-presentation/nginx
     container_name: nginx-loadbalancer
     ports:
-        - "5000:5000"
-    networks: 
-        - api-network
+      - "5000:5000"
+    networks:
+      - api-network
     depends_on:
-        - "api-1"
-        - "api-2"
-  
+      - "api-1"
+      - "api-2"
+
   api-1:
-    build: 
+    build:
       dockerfile: ./docker/python.dockerfile
       context: .
     image: docker-presentation/api
     container_name: api-1
     ports:
       - "5000"
-    networks: 
+    networks:
       - api-network
     depends_on:
-        - "db"
-  
+      - "db"
+
   api-2:
-    build: 
+    build:
       dockerfile: ./docker/python.dockerfile
       context: .
     image: docker-presentation/api
     container_name: api-2
     ports:
       - "5000"
-    networks: 
+    networks:
       - api-network
     depends_on:
-        - "db"
-  
+      - "db"
+
   db:
     image: postgres:13
     environment:
@@ -50,8 +49,8 @@ services:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-    networks: 
-        - api-network
+    networks:
+      - api-network
 
 volumes:
   postgres_data:

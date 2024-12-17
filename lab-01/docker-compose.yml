@@ -9,8 +9,8 @@ services:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-    networks: 
-        - api-network
+    networks:
+      - api-network
 
   web:
     build: .
@@ -20,8 +20,8 @@ services:
       - db
     volumes:
       - .:/app
-    networks: 
-        - api-network
+    networks:
+      - api-network
 
 volumes:
   postgres_data:
