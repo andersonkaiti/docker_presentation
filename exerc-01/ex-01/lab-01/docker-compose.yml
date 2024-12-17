@@ -1,0 +1,32 @@
+services:
+  db:
+    image: mariadb:latest
+    environment:
+      MARIADB_DATABASE: dbname
+      MARIADB_USER: username
+      MARIADB_PASSWORD: password
+      MARIADB_ROOT_PASSWORD: rootpassword
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    ports:
+      - "8080:8080"
+    networks:
+      - api-network
+
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    networks:
+      - api-network
+
+volumes:
+  mariadb_data:
+
+networks:
+  api-network:
+    driver: bridge
