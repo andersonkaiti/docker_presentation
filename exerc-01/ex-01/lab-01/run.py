@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 time.sleep(3)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@db/dbname'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mariadb://username:password@db/dbname'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 

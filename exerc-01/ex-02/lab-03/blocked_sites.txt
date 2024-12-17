@@ -1,0 +1,10 @@
+.facebook.com
+.x.com
+.instagram.com
+.youtube.com
+.tiktok.com
+.reddit.com
+.pinterest.com
+.netflix.com
+.amazon.com
+.wikipedia.org
